@@ -4,6 +4,7 @@ import slideshow from "@images/slideshow.jpg";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import UserService from "@/services/userService";
 
 const schema = z
   .object({
@@ -28,9 +29,15 @@ const SignUp: React.FC = () => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form Data:", data);
-    // TODO: ارسال به API یا مدیریت وضعیت
+  const onSubmit = async (data: FormData) => {
+    try {
+      const res = await UserService.signup(data);
+      console.log("ثبت‌نام موفق:", res);
+      alert("ثبت‌نام با موفقیت انجام شد!");
+    } catch (err: any) {
+      console.error("خطا در ثبت‌نام:", err.response?.data || err.message);
+      alert("خطا در ثبت‌نام: " + (err.response?.data || err.message));
+    }
   };
 
   return (
