@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ARI Dashboard</title>
+    <style>
+      @font-face {
+        font-family: "IranYekan";
+        src: url("/fonts/iranyekanwebregular.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      body {
+        font-family: "IranYekan", sans-serif;
+      }
+    </style>
     <link href="/src/styles.css" rel="stylesheet" />
   </head>
-  <body class="font-IranYekan">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

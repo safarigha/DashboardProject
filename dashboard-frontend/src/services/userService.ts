@@ -1,23 +1,21 @@
 import api from "./api";
-
-export interface SignupInput {
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { SignupInput, SigninInput, SigninResponse } from "@/schemas/userSchema";
 
 const userService = {
   signup: async (data: SignupInput) => {
-    const response = await api.post("/user/signup", data); // ← مسیر درست
+    const response = await api.post("/user/signup", data);
     return response.data;
   },
 
-  // مثال برای login بعداً:
-  // login: async (data: LoginInput) => {
-  //   const res = await api.post("/auth/login", data);
-  //   return res.data;
-  // },
+  signin: async (data: SigninInput): Promise<SigninResponse> => {
+    const response = await api.post<SigninResponse>("/user/signin", data);
+    return response.data;
+  },
+
+  checkAuth: async () => {
+    const response = await api.get("/user/checkAuth");
+    return response.data;
+  },
 };
 
 export default userService;

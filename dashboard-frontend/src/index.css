@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: "Iranyekan";
-  src: url("public/fonts/iranyekanwebregular.woff") format("woff");
+  src: url("/fonts/iranyekanwebregular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }

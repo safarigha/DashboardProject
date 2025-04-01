@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using DashboardAPI.Models;
+using DashboardAPI.Models.USR;
 
 namespace DashboardAPI.Data
 {

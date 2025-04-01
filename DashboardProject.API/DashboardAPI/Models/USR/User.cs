@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DashboardAPI.Models
+namespace DashboardAPI.Models.USR
 {
-    [Table("Users", Schema = "USR")] 
+    [Table("Users", Schema = "USR")]
     public class User
     {
-        [Key] 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("UserId")]
         public int Id { get; set; }
 

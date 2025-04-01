@@ -1,63 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import slideshow from "@images/slideshow.jpg";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import UserService from "@/services/userService";
-
-const schema = z
-  .object({
-    username: z.string().min(5, "نام کاربری الزامی است"),
-    email: z.string().email("ایمیل معتبر وارد کنید"),
-    password: z.string().min(6, "رمز عبور حداقل باید 6 کاراکتر باشد"),
-    confirmPassword: z.string().min(6, "تکرار رمز عبور الزامی است"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "رمز عبور و تکرار آن باید یکسان باشند",
-    path: ["confirmPassword"],
-  });
-
-type FormData = z.infer<typeof schema>;
+import { SignupInput, signupSchema } from "@/schemas/userSchema";
+import { toast } from "react-toastify";
 
 const SignUp: React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
+  } = useForm<SignupInput>({
+    resolver: zodResolver(signupSchema),
   });
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: SignupInput) => {
     try {
       const res = await UserService.signup(data);
-      console.log("ثبت‌نام موفق:", res);
-      alert("ثبت‌نام با موفقیت انجام شد!");
+      toast.success("ثبت‌نام با موفقیت انجام شد!");
     } catch (err: any) {
-      console.error("خطا در ثبت‌نام:", err.response?.data || err.message);
-      alert("خطا در ثبت‌نام: " + (err.response?.data || err.message));
+      toast.error("خطا در ثبت‌نام لطفاً دوباره تلاش کنید");
     }
   };
 
   return (
     <div className="min-h-screen bg-teal-50 flex items-center justify-center py-10">
       <div className="max-w-5xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden flex flex-col md:flex-row">
-        {/* Left (Image) */}
-        <div className="md:w-1/2">
-          <img
-            src={slideshow}
-            alt="signup"
-            className="object-cover h-full w-full"
-          />
-        </div>
-
         {/* Right (Form) */}
         <div className="md:w-1/2 px-10 py-12 flex flex-col justify-center items-center">
-          <div className="flex items-center mb-5">
+          <div className="flex flex-col items-center mb-5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10 text-orange-500 mr-2"
+              className="size-20 text-orange-500 mb-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -71,7 +47,6 @@ const SignUp: React.FC = () => {
             </svg>
             <span className="text-3xl font-bold">ARI Dashboard</span>
           </div>
-
           <h2 className="text-2xl font-bold mb-8">ثبت نام</h2>
 
           <form onSubmit={handleSubmit(onSubmit)} className="w-full">
@@ -125,7 +100,7 @@ const SignUp: React.FC = () => {
 
             <button
               type="submit"
-              className="mb-4 bg-gray-900 text-white font-bold w-full rounded-md py-3 hover:bg-gray-800 transition"
+              className="mb-4 bg-gray-900 text-white font-bold w-full rounded-md py-3 hover:bg-gray-800 transition cursor-pointer"
             >
               ثبت نام
             </button>
@@ -135,11 +110,19 @@ const SignUp: React.FC = () => {
             اکانت داری؟{" "}
             <Link
               to="/signin"
-              className="text-blue-700 font-semibold hover:underline"
+              className="text-blue-700 font-semibold hover:underline cursor-pointer"
             >
               ورود
             </Link>
           </p>
+        </div>
+        {/* Left (Image) */}
+        <div className="md:w-1/2">
+          <img
+            src={slideshow}
+            alt="signup"
+            className="object-cover h-full w-full"
+          />
         </div>
       </div>
     </div>
