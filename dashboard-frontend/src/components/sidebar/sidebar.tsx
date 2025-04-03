@@ -3,11 +3,13 @@ import {
   FaMoneyBillWave,
   FaTasks,
   FaCalendarAlt,
+  FaHome,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const menuItems = [
+    { icon: <FaHome />, label: "خانه", path: "/home" },
     { icon: <FaMoneyBillWave />, label: "مدیریت بودجه", path: "/budget" },
     { icon: <FaTasks />, label: "تسک‌ها", path: "/tasks" },
     { icon: <FaCalendarAlt />, label: "تقویم", path: "/calendar" },

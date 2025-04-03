@@ -7,6 +7,7 @@ import store from "./app/store";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { LoadingProvider } from "@/context/loadingContext";
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -16,23 +17,25 @@ if ("serviceWorker" in navigator) {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-      <ToastContainer
-        position="top-right"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={true}
-        closeOnClick
-        rtl={true}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-        toastStyle={{
-          fontFamily: "IranYekan",
-        }}
-      />
-    </Provider>
+    <LoadingProvider>
+      <Provider store={store}>
+        <App />
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={true}
+          closeOnClick
+          rtl={true}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          toastStyle={{
+            fontFamily: "IranYekan",
+          }}
+        />
+      </Provider>
+    </LoadingProvider>
   </React.StrictMode>
 );

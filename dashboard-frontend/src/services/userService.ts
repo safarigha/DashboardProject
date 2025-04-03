@@ -1,5 +1,10 @@
 import api from "./api";
-import { SignupInput, SigninInput, SigninResponse } from "@/schemas/userSchema";
+import {
+  SignupInput,
+  SigninInput,
+  SigninResponse,
+  CheckAuthResponse,
+} from "@/schemas/userSchema";
 
 const userService = {
   signup: async (data: SignupInput) => {
@@ -13,7 +18,7 @@ const userService = {
   },
 
   checkAuth: async () => {
-    const response = await api.get("/user/checkAuth");
+    const response = await api.get<CheckAuthResponse>("/user/checkAuth");
     return response.data;
   },
 };

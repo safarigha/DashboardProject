@@ -24,3 +24,7 @@ export type SigninResponse = {
   username: string;
   token: string;
 };
+
+export interface CheckAuthResponse {
+  isAuthenticated: boolean;
+}

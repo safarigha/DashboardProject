@@ -30,14 +30,21 @@ const WeatherMap: React.FC<WeatherMapProps> = ({
     <MapContainer
       center={[20, 0]}
       zoom={2}
-      className="h-[600px] w-full rounded"
+      className="h-[500px] w-full rounded"
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <MapClickHandler />
       {weatherData && (
         <Marker position={[weatherData.coord.lat, weatherData.coord.lon]}>
           <Popup>
-            <div>
+            <div
+              className="gap-x-6 gap-y-1 text-sm text-gray-600 font-bold"
+              style={{
+                direction: "rtl",
+                textAlign: "right",
+                fontFamily: "IranYekan",
+              }}
+            >
               <h3>{weatherData.name}</h3>
               <p>دما: {Math.round(weatherData.main.temp - 273.15)}°C</p>
               <p>وضعیت: {weatherData.weather[0].description}</p>
