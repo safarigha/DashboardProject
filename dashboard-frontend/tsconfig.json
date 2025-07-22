@@ -9,7 +9,8 @@
       "@pages/*": ["src/pages/*"],
       "@services/*": ["src/services/*"],
       "@schemas/*": ["src/schemas/*"],
-      "@features/*": ["src/app/features/*"]
+      "@features/*": ["src/app/features/*"],
+      "@images/*": ["src/assets/images/*"]
     },
     "jsx": "react-jsx",
     "moduleResolution": "bundler",

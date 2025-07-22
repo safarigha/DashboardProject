@@ -4,6 +4,7 @@ import {
   FaTasks,
   FaCalendarAlt,
   FaHome,
+  FaGamepad,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -14,6 +15,7 @@ const Sidebar = () => {
     { icon: <FaTasks />, label: "تسک‌ها", path: "/tasks" },
     { icon: <FaCalendarAlt />, label: "تقویم", path: "/calendar" },
     { icon: <FaCloudSun />, label: "آب و هوا", path: "/weather" },
+    { icon: <FaGamepad />, label: "بازی", path: "/games" },
   ];
 
   return (

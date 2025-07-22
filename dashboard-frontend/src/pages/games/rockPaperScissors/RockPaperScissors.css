@@ -1,0 +1,47 @@
+.rps-container {
+  background-color: #eaebec;
+  font-size: 3rem;
+  color: #3a4655;
+  padding: 2rem;
+}
+
+.rps-container .selections {
+  display: flex;
+  justify-content: center;
+}
+
+.rps-container .selection {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.rps-container .selection:hover {
+  transform: scale(0.8);
+}
+
+.rps-container .results {
+  margin-top: 1rem;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+.rps-container .result-score {
+  margin-left: 0.1rem;
+}
+
+.rps-container .result-selection {
+  opacity: 0.5;
+  text-align: center;
+}
+
+.rps-container .result-selection.winner {
+  opacity: 1;
+  filter: invert(37%) sepia(10%) saturate(4584%) hue-rotate(117deg)
+    brightness(97%) contrast(99%);
+}

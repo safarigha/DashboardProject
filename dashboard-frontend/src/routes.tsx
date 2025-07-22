@@ -5,6 +5,7 @@ import Signin from "@pages/signin/signin";
 import SignUp from "@pages/signup/signup";
 import PrivateRoute from "@components/PrivateRoute/PrivateRoute";
 import Weather from "@pages/weather/weather";
+import Games from "@pages/games/index";
 // import NotFoundPage from "../pages/NotFoundPage";
 
 const AppRoutes = () => {
@@ -30,6 +31,16 @@ const AppRoutes = () => {
           <PrivateRoute>
             <Layout>
               <Weather />
+            </Layout>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/games"
+        element={
+          <PrivateRoute>
+            <Layout>
+              <Games />
             </Layout>
           </PrivateRoute>
         }
